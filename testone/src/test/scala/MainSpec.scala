@@ -15,14 +15,16 @@ class MainSpec extends WordSpec with Matchers {
     }
   }
   "The Person companion object" should {
-    val (akira, peter, nick) = (
+    val (akira, peter, nick, joe, eliza) = (
       Person(firstName = "Akira", lastName = "Sakura", age = 12),
       Person(firstName = "Peter", lastName = "Müller", age = 34),
-      Person(firstName = "Nick", lastName = "Tagart", age = 52)
+      Person(firstName = "Nick", lastName = "Tagart", age = 52),
+      Person(firstName = "Joe" , lastName = "Garfield", age = 18),
+      Person(firstName = "Eliza", lastName = "Brown", age = 25)
     )
     "return a list of adult person" in {
-      val ref = List(akira, peter, nick)
-      Person.filterAdult(ref) should be(List(peter, nick))
+      val ref = List(akira, peter, nick, joe, eliza)
+      Person.filterAdult(ref) should be(List(peter, nick, joe, eliza))
     }
     "return an empty list if no adult in the list" in {
       val ref = List(akira)
